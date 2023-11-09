@@ -33,8 +33,7 @@ def encode_image_to_base64(image: np.ndarray) -> str:
     if not success:
         raise ValueError("Could not encode image to JPEG format.")
 
-    encoded_image = base64.b64encode(buffer).decode('utf-8')
-    return encoded_image
+    return base64.b64encode(buffer).decode('utf-8')
 
 
 def compose_payload(image: np.ndarray, prompt: str) -> dict:
@@ -92,8 +91,7 @@ def classify_image(api_key: str, image: np.ndarray) -> str:
             "Please follow the instructions in the README to set it up.")
     image = preprocess_image(image=image)
     prompt = compose_classification_prompt(classes=CLASSES)
-    response = prompt_image(api_key=api_key, image=image, prompt=prompt)
-    return response
+    return prompt_image(api_key=api_key, image=image, prompt=prompt)
 
 
 with gr.Blocks() as demo:
